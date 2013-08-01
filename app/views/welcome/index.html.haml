@@ -1,0 +1,15 @@
+%h1 Welcome to the box
+%section(ng-app)
+  -#%input{:type => "text"}(ng-model = "myVar")
+  -#%h2 {{myVar}}
+  
+  %div(ng-controller = "TodoCtrl")
+    %h3 {{ remaining() }}  
+    %a(ng-click = "archive()") Archive
+    %ul 
+      %li(ng-repeat = "todo in todos")
+        %input{:type => "checkbox"}(ng-model = "todo.done") {{todo.text}}
+          
+    %form(ng-submit = "addTodo()")
+      %input{:placeholder => "add new todo here", :size => "30", :type => "text"}(ng-model = "todoText")
+      %input{:type => "submit", :value => "add"}
